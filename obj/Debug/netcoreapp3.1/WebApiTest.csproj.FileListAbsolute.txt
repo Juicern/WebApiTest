@@ -42,5 +42,4 @@ D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.csproj.CopyComplete
 D:\WebApiTest\obj\Debug\netcoreapp3.1\staticwebassets\WebApiTest.StaticWebAssets.Manifest.cache
 D:\WebApiTest\obj\Debug\netcoreapp3.1\staticwebassets\WebApiTest.StaticWebAssets.xml
 D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.genruntimeconfig.cache
-D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.csprojAssemblyReference.cache
 D:\WebApiTest\bin\Debug\netcoreapp3.1\topsdk-net-core.dll
