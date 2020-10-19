@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DingDing.Api.App.Models.ResponseModel
+namespace WebApiTest.Models.ResponseModel
 {
     // 考勤请求返回模型
     public class RecordResponseModel : BaseResponseModel
