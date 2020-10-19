@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace WebApiTest.Models.ResponseModel
 {
     // Token请求返回模型
-    public class TokenRequestModel
+    public class TokenResponseModel : BaseResponseModel
     {
-
+        public string Access_Token { get; set; }
+        public int Expires_in { get; set; }
     }
-}  
+}
