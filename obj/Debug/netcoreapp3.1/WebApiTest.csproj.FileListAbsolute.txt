@@ -18,3 +18,27 @@ C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\staticwebass
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.dll
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.pdb
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.genruntimeconfig.cache
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.AssemblyInfoInputs.cache
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.AssemblyInfo.cs
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.csproj.CoreCompileInputs.cache
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.MvcApplicationPartsAssemblyInfo.cache
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.dll
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.pdb
+D:\WebApiTest\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\WebApiTest\bin\Debug\netcoreapp3.1\appsettings.json
+D:\WebApiTest\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.exe
+D:\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.deps.json
+D:\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.runtimeconfig.json
+D:\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.runtimeconfig.dev.json
+D:\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.dll
+D:\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.pdb
+D:\WebApiTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\WebApiTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\WebApiTest\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\WebApiTest\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.RazorTargetAssemblyInfo.cache
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.csproj.CopyComplete
+D:\WebApiTest\obj\Debug\netcoreapp3.1\staticwebassets\WebApiTest.StaticWebAssets.Manifest.cache
+D:\WebApiTest\obj\Debug\netcoreapp3.1\staticwebassets\WebApiTest.StaticWebAssets.xml
+D:\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.genruntimeconfig.cache

@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RickyChu\\OneDrive - HHU\\WebApiTest\\WebApiTest.csproj": {}
+    "D:\\WebApiTest\\WebApiTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RickyChu\\OneDrive - HHU\\WebApiTest\\WebApiTest.csproj": {
+    "D:\\WebApiTest\\WebApiTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RickyChu\\OneDrive - HHU\\WebApiTest\\WebApiTest.csproj",
+        "projectUniqueName": "D:\\WebApiTest\\WebApiTest.csproj",
         "projectName": "WebApiTest",
-        "projectPath": "C:\\Users\\RickyChu\\OneDrive - HHU\\WebApiTest\\WebApiTest.csproj",
-        "packagesPath": "C:\\Users\\RickyChu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RickyChu\\OneDrive - HHU\\WebApiTest\\obj\\",
+        "projectPath": "D:\\WebApiTest\\WebApiTest.csproj",
+        "packagesPath": "C:\\Users\\Jrj-Chasel\\.nuget\\packages\\",
+        "outputPath": "D:\\WebApiTest\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\RickyChu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jrj-Chasel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +41,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

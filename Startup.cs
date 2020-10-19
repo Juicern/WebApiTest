@@ -25,6 +25,9 @@ namespace WebApiTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddControllersWithViews()  //也可以是 AddMvc() 等其他扩展方法    
+                    .AddNewtonsoftJson();       // 支持 NewtonsoftJson
+            //...
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
