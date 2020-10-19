@@ -13,8 +13,8 @@ namespace WebApiTest
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            // CreateHostBuilder(args).Build().Run();
+            
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
