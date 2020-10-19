@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApiTest.Models.ResponseModel
 {
-    // Token请求返回模型
+    // Token请求模型
     public class TokenRequestModel
     {
 
