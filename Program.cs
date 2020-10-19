@@ -103,11 +103,11 @@ namespace ConsoleApp1
             req1.Msgtype = "oa";//发送消息是以oa的形式发送的,其他的还有text,image等形式
             req1.AgentId = 917416506;//微应用ID
             req1.UseridList = Urid;//收信息的userId,这个是by公司来区分，在该公司内这是一个唯一标识符
-            req1.ToAllUser = true;//是否发给所有人
+            req1.ToAllUser = false;//是否发给所有人
                                    //消息文本
-            req1.Msgcontent = "{\"message_url\": \"http://dingtalk.com\",\"head\": {\"bgcolor\": \"FFBBBBBB\",\"text\": \"头部标题\"},\"body\": {\"title\": \"拿钱学习\",\"form\": [{\"key\": \"姓名:\", \"value\": \"hong\" },{\"key\": \"年龄:\", \"value\": \"18\" },{\"key\": \"身高:\", \"value\": \"1.6米\"},{\"key\": \"体重:\",\"value\": \"90斤\"},{\"key\": \"学历:\",\"value\": \"硕士\"},{\"key\": \"爱好:\",\"value\": \"学习\"}],\"rich\": {\"num\": \"10000\",\"unit\": \"元\"},\"content\": \"快去学习！！！\",\"file_count\": \"3\",\"author\": \"小白\"}}";
+            req1.Msgcontent = "{\"message_url\": \"http://dingtalk.com\",\"head\": {\"bgcolor\": \"FFBBBBBB\",\"text\": \"头部标题\"},\"body\": {\"title\": \"拿钱学习\",\"form\": [{\"key\": \"姓名:\", \"value\": \"hong\" },{\"key\": \"年龄:\", \"value\": \"18\" },{\"key\": \"身高:\", \"value\": \"1.6米\"},{\"key\": \"体重:\",\"value\": \"90斤\"},{\"key\": \"学历:\",\"value\": \"硕士\"},{\"key\": \"爱好:\",\"value\": \"学习\"}],\"rich\": {\"num\": \"10000\",\"unit\": \"元\"},\"content\": \"快去学习！！！\",\"file_count\": \"1\",\"author\": \"小白\"}}";
             CorpMessageCorpconversationAsyncsendResponse rsp1 = cl.Execute(req1, AccessToken);//发送消息
-
+            Console.WriteLine(rsp1.Body);
         }
     }
 }
