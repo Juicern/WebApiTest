@@ -8,5 +8,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="topsdk-net-core">
+      <HintPath>..\dingtalk-sdk-netcore\topsdk-net-core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
 </Project>
