@@ -128,10 +128,26 @@ namespace ConsoleApp1
             OapiUserGetAdminResponse response4 = client4.Execute(request4, AccessToken);
             Console.WriteLine(response4.Body);
 
+            // 创建角色
+            DefaultDingTalkClient client5 = new DefaultDingTalkClient("https://oapi.dingtalk.com/role/add_role");
+            OapiRoleAddRoleRequest request5 = new OapiRoleAddRoleRequest();
+            request5.RoleName = "Test";
+            request5.GroupId = 1631985729L;
+            OapiRoleAddRoleResponse response5 = client5.Execute(request5, AccessToken);
 
+            ////更新角色，有bug，提示需要修改为GET，修改后依然报错称缺少CorId和APPkey，但是新版本小程序已经没有CorId了。
+            //DefaultDingTalkClient client6 = new DefaultDingTalkClient("https://oapi.dingtalk.com/role/update_role");
+            //OapiRoleUpdateRoleRequest request6 = new OapiRoleUpdateRoleRequest();
+            //request6.RoleName = "AnyThing";
+            //request6.RoleId = 1;
+            //request6.SetHttpMethod("POST");
+            //OapiRoleUpdateRoleResponse response6 = client.Execute(request6, AccessToken);
 
-
-
+            // 删除角色
+            DefaultDingTalkClient client7 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/role/deleterole");
+            OapiRoleDeleteroleRequest request7 = new OapiRoleDeleteroleRequest();
+            request7.RoleId = 1;
+            OapiRoleDeleteroleResponse response7 = client7.Execute(request7, AccessToken);
 
 
             //根据部门获取到Urid
