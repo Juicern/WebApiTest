@@ -78,6 +78,11 @@ namespace ConsoleApp1
 {
     class Program
     {
+        private static string appKey = "ding7nfi3xjh1zyi9mzy";
+        private static string appSecret = "NPw2kd_61hl4dmV3iy1rUc5hY6TvC-1KnT-6febDEZ_aZgDr-Kpd8jYbsvJYJo3q";
+        private static string userId = "manager8674";
+        private static long groupId = 1631985729L;
+        private static long agentId = 917416506L;
         static void Main(string[] args)
         {
             
@@ -86,8 +91,8 @@ namespace ConsoleApp1
             //获取到AccessToken获取AccessToken需要Appkey和Appsecret,请求是GET
             DefaultDingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/gettoken");
             OapiGettokenRequest request = new OapiGettokenRequest();
-            request.Appkey = "ding7nfi3xjh1zyi9mzy";//Appkey
-            request.Appsecret = "NPw2kd_61hl4dmV3iy1rUc5hY6TvC-1KnT-6febDEZ_aZgDr-Kpd8jYbsvJYJo3q";//Appsecret
+            request.Appkey = appKey;//Appkey
+            request.Appsecret = appSecret;//Appsecret
             request.SetHttpMethod("GET");
             OapiGettokenResponse response = client.Execute(request);
             //获取到AccessToken
@@ -122,7 +127,7 @@ namespace ConsoleApp1
             // 获取用户信息
             DefaultDingTalkClient client3 = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/get");
             OapiUserGetRequest request3 = new OapiUserGetRequest();
-            request3.Userid = "manager8674";
+            request3.Userid = userId;
             request3.SetHttpMethod("GET");
             OapiUserGetResponse response3 = client3.Execute(request3, AccessToken);
             Console.WriteLine("获取用户信息：");
@@ -142,7 +147,7 @@ namespace ConsoleApp1
             DefaultDingTalkClient client5 = new DefaultDingTalkClient("https://oapi.dingtalk.com/role/add_role");
             OapiRoleAddRoleRequest request5 = new OapiRoleAddRoleRequest();
             request5.RoleName = "Test";
-            request5.GroupId = 1631985729L;
+            request5.GroupId = groupId;
             OapiRoleAddRoleResponse response5 = client5.Execute(request5, AccessToken);
             Console.WriteLine("创建角色：");
             Console.WriteLine(response5.Body);
@@ -171,7 +176,8 @@ namespace ConsoleApp1
             //// 添加外部联系人 官方代码有问题
             //DefaultDingTalkClient client8 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/extcontact/create");
             //OapiExtcontactCreateRequest request8 = new OapiExtcontactCreateRequest();
-            //OpenExtContactDomain 
+            //request8.Contact
+            
 
             // 获取外部联系人列表
             DefaultDingTalkClient client9 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/extcontact/list");
@@ -215,7 +221,7 @@ namespace ConsoleApp1
             // 发送工作通知
             DefaultDingTalkClient client13 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/message/corpconversation/asyncsend_v2");
             OapiMessageCorpconversationAsyncsendV2Request request13 = new OapiMessageCorpconversationAsyncsendV2Request();
-            request13.AgentId = 917416506L;
+            request13.AgentId = agentId;
             request13.ToAllUser = true;
             request13.Msg = @"{
                 ""msgtype"": ""oa"",
@@ -251,7 +257,7 @@ namespace ConsoleApp1
             //获取工作通知消息的发送进度
             DefaultDingTalkClient client14 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/message/corpconversation/getsendprogress");
             OapiMessageCorpconversationGetsendprogressRequest request14 = new OapiMessageCorpconversationGetsendprogressRequest();
-            request14.AgentId = 917416506L;
+            request14.AgentId = agentId;
             request14.TaskId = response13.TaskId;
             OapiMessageCorpconversationGetsendprogressResponse response14 = client14.Execute(request14, AccessToken);
             Console.WriteLine("获取工作通知消息的发送进度");
@@ -261,7 +267,7 @@ namespace ConsoleApp1
             //获取工作通知消息的发送结果
             DefaultDingTalkClient client15 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/message/corpconversation/getsendresult");
             OapiMessageCorpconversationGetsendresultRequest request15 = new OapiMessageCorpconversationGetsendresultRequest();
-            request15.AgentId = 917416506L;
+            request15.AgentId = agentId;
             request15.TaskId = response13.TaskId;
             OapiMessageCorpconversationGetsendresultResponse response15 = client15.Execute(request15, AccessToken);
             Console.WriteLine("获取工作通知消息的发送结果");
