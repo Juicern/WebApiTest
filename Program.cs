@@ -248,6 +248,16 @@ namespace ConsoleApp1
             Console.WriteLine(response13.Body);
             Console.WriteLine();
 
+            //获取工作通知消息的发送进度
+            DefaultDingTalkClient client14 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/message/corpconversation/getsendprogress");
+            OapiMessageCorpconversationGetsendprogressRequest request14 = new OapiMessageCorpconversationGetsendprogressRequest();
+            request14.AgentId = 917416506L;
+            request14.TaskId = response13.TaskId;
+            OapiMessageCorpconversationGetsendprogressResponse response14 = client14.Execute(request14, AccessToken);
+            Console.WriteLine("获取工作通知消息的发送进度");
+            Console.WriteLine(response14.Body);
+            Console.WriteLine();
+
 
 
 
