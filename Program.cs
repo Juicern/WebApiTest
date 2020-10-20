@@ -258,9 +258,15 @@ namespace ConsoleApp1
             Console.WriteLine(response14.Body);
             Console.WriteLine();
 
-
-
-
+            //获取工作通知消息的发送结果
+            DefaultDingTalkClient client15 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/message/corpconversation/getsendresult");
+            OapiMessageCorpconversationGetsendresultRequest request15 = new OapiMessageCorpconversationGetsendresultRequest();
+            request15.AgentId = 917416506L;
+            request15.TaskId = response13.TaskId;
+            OapiMessageCorpconversationGetsendresultResponse response15 = client15.Execute(request15, AccessToken);
+            Console.WriteLine("获取工作通知消息的发送结果");
+            Console.WriteLine(response15.Body);
+            Console.WriteLine();
 
 
 
