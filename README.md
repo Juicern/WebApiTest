@@ -1,4 +1,5 @@
 # WebApiTest
+
 调用钉钉API的.NET测试
 
 ## 注意事项
@@ -19,6 +20,13 @@
 
 8. 连续发送相同消息时，无法接收，To_all_user设置为true时，一天最多发送三次，这些都不会有错误提示。
 
-   
+9. 更新角色，有bug，提示需要修改为GET，修改后依然报错称缺少CorId和APPkey，但是新版本小程序已经没有CorId了。
 
-   
+10. 添加外部联系人 官方代码有问题(已解决，需要在OpenExtContactDomain前加上request名
+    ，然而又有新问题：还是和上面“更新角色”的报错一样，提示：缺少参数 corpid or appkey
+
+    
+
+    
+
+    
