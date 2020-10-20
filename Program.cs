@@ -45,8 +45,8 @@ namespace WebApiTest
             var records = JsonConvert.DeserializeObject<RecordResponseModel>(await HttpHepler.GetDataPostJsonUrlYB("https://oapi.dingtalk.com/attendance/listRecord?access_token=" + _TokenResponseModel.Access_Token, JsonConvert.SerializeObject(new RecordRequestModel()
             {
                 userIds = userIDs.UserIds,
-                checkDateFrom = "2020-10-19 00:00:00",
-                checkDateTo = "2020-10-19 23:59:59",
+                checkDateFrom = "2020-10-20 00:00:00",
+                checkDateTo = "2020-10-20 23:59:59",
                 isI18n = false
             })));
 
@@ -66,6 +66,8 @@ namespace WebApiTest
 using DingTalk.Api;
 using DingTalk.Api.Request;
 using DingTalk.Api.Response;
+using FastJSON;
+using Microsoft.AspNetCore.Http.Features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,8 +80,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            
 
-            //获取到AccessToken获取AccessToken需要Appkey和Appsecret,请求是GTE
+
+            //获取到AccessToken获取AccessToken需要Appkey和Appsecret,请求是GET
             DefaultDingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/gettoken");
             OapiGettokenRequest request = new OapiGettokenRequest();
             request.Appkey = "ding7nfi3xjh1zyi9mzy";//Appkey
@@ -88,6 +92,48 @@ namespace ConsoleApp1
             OapiGettokenResponse response = client.Execute(request);
             //获取到AccessToken
             string AccessToken = response.AccessToken;
+
+
+            // 创建员工
+            DefaultDingTalkClient client1 = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/create");
+            OapiUserCreateRequest request1 = new OapiUserCreateRequest();
+            request1.Userid = "zhangsan";
+            request1.Mobile = "16657119236";
+            request1.Email = "535497379@qq.com";
+            request1.Name = "张三";
+            List<long> departments1 = new List<long>();
+            departments1.Add(1L);
+            request1.Department = JSON.ToJSON(departments1);
+            OapiUserCreateResponse response1 = client1.Execute(request1, AccessToken);
+
+            // 删除员工
+            DefaultDingTalkClient client2 = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/delete");
+            OapiUserDeleteRequest request2 = new OapiUserDeleteRequest();
+            request2.Userid = "zhangsan";
+            request2.SetHttpMethod("GET");
+            OapiUserDeleteResponse response2 = client2.Execute(request2, AccessToken);
+
+            // 获取用户信息
+            DefaultDingTalkClient client3 = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/get");
+            OapiUserGetRequest request3 = new OapiUserGetRequest();
+            request3.Userid = "manager8674";
+            request3.SetHttpMethod("GET");
+            OapiUserGetResponse response3 = client3.Execute(request3, AccessToken);
+            Console.WriteLine(response3.Body);
+
+            // 获取管理员信息
+            DefaultDingTalkClient client4 = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/get_admin");
+            OapiUserGetAdminRequest request4 = new OapiUserGetAdminRequest();
+            request4.SetHttpMethod("GET");
+            OapiUserGetAdminResponse response4 = client4.Execute(request4, AccessToken);
+            Console.WriteLine(response4.Body);
+
+
+
+
+
+
+
             //根据部门获取到Urid
             DefaultDingTalkClient clie = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/getDeptMember");
             OapiUserGetDeptMemberRequest req = new OapiUserGetDeptMemberRequest();
