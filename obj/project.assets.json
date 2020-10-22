@@ -222,23 +222,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jrj-Chasel\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\RickyChu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WebApiTest\\WebApiTest.csproj",
+      "projectUniqueName": "C:\\Users\\RickyChu\\OneDrive - HHU\\WebApiTest\\WebApiTest.csproj",
       "projectName": "WebApiTest",
-      "projectPath": "D:\\WebApiTest\\WebApiTest.csproj",
-      "packagesPath": "C:\\Users\\Jrj-Chasel\\.nuget\\packages\\",
-      "outputPath": "D:\\WebApiTest\\obj\\",
+      "projectPath": "C:\\Users\\RickyChu\\OneDrive - HHU\\WebApiTest\\WebApiTest.csproj",
+      "packagesPath": "C:\\Users\\RickyChu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RickyChu\\OneDrive - HHU\\WebApiTest\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Jrj-Chasel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RickyChu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

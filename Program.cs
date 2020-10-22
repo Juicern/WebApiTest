@@ -80,9 +80,10 @@ namespace ConsoleApp1
     {
         private static string appKey = "ding7nfi3xjh1zyi9mzy";
         private static string appSecret = "NPw2kd_61hl4dmV3iy1rUc5hY6TvC-1KnT-6febDEZ_aZgDr-Kpd8jYbsvJYJo3q";
+        private static long agentId = 917416506L;
         private static string userId = "manager8674";
         private static long groupId = 1631985729L;
-        private static long agentId = 917416506L;
+        private static string accessToken;
         static void Main(string[] args)
         {
             
@@ -96,7 +97,7 @@ namespace ConsoleApp1
             request.SetHttpMethod("GET");
             OapiGettokenResponse response = client.Execute(request);
             //获取到AccessToken
-            string AccessToken = response.AccessToken;
+            accessToken = response.AccessToken;
 
 
             // 创建员工
@@ -109,7 +110,7 @@ namespace ConsoleApp1
             List<long> departments1 = new List<long>();
             departments1.Add(1L);
             request1.Department = JSON.ToJSON(departments1);
-            OapiUserCreateResponse response1 = client1.Execute(request1, AccessToken);
+            OapiUserCreateResponse response1 = client1.Execute(request1, accessToken);
             Console.WriteLine("创建员工：");
             Console.WriteLine(response1.Body);
             Console.WriteLine();
@@ -119,7 +120,7 @@ namespace ConsoleApp1
             OapiUserDeleteRequest request2 = new OapiUserDeleteRequest();
             request2.Userid = "zhangsan";
             request2.SetHttpMethod("GET");
-            OapiUserDeleteResponse response2 = client2.Execute(request2, AccessToken);
+            OapiUserDeleteResponse response2 = client2.Execute(request2, accessToken);
             Console.WriteLine("删除员工：");
             Console.WriteLine(response2.Body);
             Console.WriteLine();
@@ -129,7 +130,7 @@ namespace ConsoleApp1
             OapiUserGetRequest request3 = new OapiUserGetRequest();
             request3.Userid = userId;
             request3.SetHttpMethod("GET");
-            OapiUserGetResponse response3 = client3.Execute(request3, AccessToken);
+            OapiUserGetResponse response3 = client3.Execute(request3, accessToken);
             Console.WriteLine("获取用户信息：");
             Console.WriteLine(response3.Body);
             Console.WriteLine();
@@ -138,7 +139,7 @@ namespace ConsoleApp1
             DefaultDingTalkClient client4 = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/get_admin");
             OapiUserGetAdminRequest request4 = new OapiUserGetAdminRequest();
             request4.SetHttpMethod("GET");
-            OapiUserGetAdminResponse response4 = client4.Execute(request4, AccessToken);
+            OapiUserGetAdminResponse response4 = client4.Execute(request4, accessToken);
             Console.WriteLine("获取管理员信息：");
             Console.WriteLine(response4.Body);
             Console.WriteLine();
@@ -148,7 +149,7 @@ namespace ConsoleApp1
             OapiRoleAddRoleRequest request5 = new OapiRoleAddRoleRequest();
             request5.RoleName = "Test";
             request5.GroupId = groupId;
-            OapiRoleAddRoleResponse response5 = client5.Execute(request5, AccessToken);
+            OapiRoleAddRoleResponse response5 = client5.Execute(request5, accessToken);
             Console.WriteLine("创建角色：");
             Console.WriteLine(response5.Body);
             Console.WriteLine();
@@ -159,7 +160,7 @@ namespace ConsoleApp1
             request6.RoleName = "AnyThing";
             request6.RoleId = 1;
             request6.SetHttpMethod("GET");
-            OapiRoleUpdateRoleResponse response6 = client.Execute(request6, AccessToken);
+            OapiRoleUpdateRoleResponse response6 = client.Execute(request6, accessToken);
             Console.WriteLine("更新角色");
             Console.WriteLine(response6.Body);
             Console.WriteLine();
@@ -168,33 +169,33 @@ namespace ConsoleApp1
             DefaultDingTalkClient client7 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/role/deleterole");
             OapiRoleDeleteroleRequest request7 = new OapiRoleDeleteroleRequest();
             request7.RoleId = response5.RoleId;
-            OapiRoleDeleteroleResponse response7 = client7.Execute(request7, AccessToken);
+            OapiRoleDeleteroleResponse response7 = client7.Execute(request7, accessToken);
             Console.WriteLine("删除角色:");
             Console.WriteLine(response7.Body);
             Console.WriteLine();
 
-            //// 添加外部联系人 官方代码有问题(已解决，需要在OpenExtContactDomain前加上request名
-            //// 然而又有新问题：还是和上面“更新角色”的报错一样，提示：缺少参数 corpid or appkey
-            //DefaultDingTalkClient client8 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/extcontact/create");
-            //OapiExtcontactCreateRequest request8 = new OapiExtcontactCreateRequest();
-            //OapiExtcontactCreateRequest.OpenExtContactDomain contacter = new OapiExtcontactCreateRequest.OpenExtContactDomain();
-            //contacter.Title = "CFO";
-            //contacter.Name = "测试的外部联系人";
-            //contacter.StateCode = "86";
-            //contacter.CompanyName = "钉钉";
-            //contacter.Mobile = "15295778118";
-            //request8.Contact = contacter.ToString();
-            //OapiExtcontactCreateResponse  response8 = client8.Execute(request8, AccessToken);
-            //Console.WriteLine("添加外部联系人:");
-            //Console.WriteLine(response6.Body);
-            //Console.WriteLine();
+            // 添加外部联系人 官方代码有问题(已解决，需要在OpenExtContactDomain前加上request名
+            // 然而又有新问题：还是和上面“更新角色”的报错一样，提示：缺少参数 corpid or appkey
+            DefaultDingTalkClient client8 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/extcontact/create");
+            OapiExtcontactCreateRequest request8 = new OapiExtcontactCreateRequest();
+            OapiExtcontactCreateRequest.OpenExtContactDomain contacter = new OapiExtcontactCreateRequest.OpenExtContactDomain();
+            contacter.Title = "CFO";
+            contacter.Name = "测试的外部联系人";
+            contacter.StateCode = "86";
+            contacter.CompanyName = "钉钉";
+            contacter.Mobile = "15295778118";
+            request8.Contact = contacter.ToString();
+            OapiExtcontactCreateResponse response8 = client8.Execute(request8, accessToken);
+            Console.WriteLine("添加外部联系人:");
+            Console.WriteLine(response6.Body);
+            Console.WriteLine();
 
             // 获取外部联系人列表
             DefaultDingTalkClient client9 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/extcontact/list");
             OapiExtcontactListRequest request9 = new OapiExtcontactListRequest();
             request9.Size = 20L;
             request9.Offset = 0L;
-            OapiExtcontactListResponse response9 = client9.Execute(request9, AccessToken);
+            OapiExtcontactListResponse response9 = client9.Execute(request9, accessToken);
             Console.WriteLine("获取外部联系人列表:");
             Console.WriteLine(response9.Body);
             Console.WriteLine();
@@ -203,10 +204,10 @@ namespace ConsoleApp1
             //DefaultDingTalkClient client10 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/create");
             //OapiChatCreateRequest request10 = new OapiChatCreateRequest();
             //request10.Name = "TestCreate";
-            //request10.Owner = "manager8674";
+            //request10.Owner = userId;
             //request10.Useridlist ??= new List<string>();
-            //request10.Useridlist.Add("manager8674");
-            //OapiChatCreateResponse response10 = client10.Execute(request10, AccessToken);
+            //request10.Useridlist.Add(userId);
+            //OapiChatCreateResponse response10 = client10.Execute(request10, accessToken);
             //Console.WriteLine("创建群会话");
             //Console.WriteLine(response10.Body);
             //Console.WriteLine();
@@ -216,7 +217,7 @@ namespace ConsoleApp1
             //OapiChatGetRequest request11 = new OapiChatGetRequest();
             //request11.Chatid = response10.Chatid;
             //request11.SetHttpMethod("GET");
-            //OapiChatGetResponse response11 = client11.Execute(request11, AccessToken);
+            //OapiChatGetResponse response11 = client11.Execute(request11, accessToken);
             //Console.WriteLine("获取群会话");
             //Console.WriteLine(response11.Body);
             //Console.WriteLine();
@@ -226,7 +227,7 @@ namespace ConsoleApp1
             //OapiChatUpdateRequest request12 = new OapiChatUpdateRequest();
             //request12.Chatid = response10.Chatid;
             //request12.Name = "TestUpdate";
-            //OapiChatUpdateResponse response12 = client12.Execute(request12, AccessToken);
+            //OapiChatUpdateResponse response12 = client12.Execute(request12, accessToken);
             //Console.WriteLine("更新群对话");
             //Console.WriteLine(response12.Body);
             //Console.WriteLine();
@@ -236,6 +237,24 @@ namespace ConsoleApp1
             OapiMessageCorpconversationAsyncsendV2Request request13 = new OapiMessageCorpconversationAsyncsendV2Request();
             request13.AgentId = agentId;
             request13.ToAllUser = true;
+            OapiMessageCorpconversationAsyncsendV2Request.MsgDomain msgDomain = new OapiMessageCorpconversationAsyncsendV2Request.MsgDomain();
+            //msgDomain.Msgtype = "oa";
+            //msgDomain.Oa.MessageUrl = "http://dingtalk.com";
+            //msgDomain.Oa.Head.Bgcolor = "FFBBBBBB";
+            //msgDomain.Oa.Head.Text = "头部标题";
+            //msgDomain.Oa.Body.Title = "正文标题";
+            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "姓名", Value = "张三" });
+            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "年龄", Value = "20" });
+            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "身高", Value = "1.8米" });
+            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "体重", Value = "130斤" });
+            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "学历", Value = "本科" });
+            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "爱好", Value = "打球、听音乐" });
+            //msgDomain.Oa.Body.Rich.Num = "15.6";
+            //msgDomain.Oa.Body.Rich.Unit = "元";
+            //msgDomain.Oa.Body.Content = "大段文本大段文本大段文本大段文本大段文本";
+            //msgDomain.Oa.Body.Image = "@lADOADmaWMzazQKA";
+            //msgDomain.Oa.Body.FileCount = "3";
+            //msgDomain.Oa.Body.Author = "李四";
             request13.Msg = @"{
                 ""msgtype"": ""oa"",
                 ""oa"": {
@@ -262,7 +281,7 @@ namespace ConsoleApp1
                     }
                 }
             }";
-            OapiMessageCorpconversationAsyncsendV2Response response13 = client13.Execute(request13, AccessToken);
+            OapiMessageCorpconversationAsyncsendV2Response response13 = client13.Execute(request13, accessToken);
             Console.WriteLine("发送工作通知:");
             Console.WriteLine(response13.Body);
             Console.WriteLine();
@@ -272,7 +291,7 @@ namespace ConsoleApp1
             OapiMessageCorpconversationGetsendprogressRequest request14 = new OapiMessageCorpconversationGetsendprogressRequest();
             request14.AgentId = agentId;
             request14.TaskId = response13.TaskId;
-            OapiMessageCorpconversationGetsendprogressResponse response14 = client14.Execute(request14, AccessToken);
+            OapiMessageCorpconversationGetsendprogressResponse response14 = client14.Execute(request14, accessToken);
             Console.WriteLine("获取工作通知消息的发送进度");
             Console.WriteLine(response14.Body);
             Console.WriteLine();
@@ -282,7 +301,7 @@ namespace ConsoleApp1
             OapiMessageCorpconversationGetsendresultRequest request15 = new OapiMessageCorpconversationGetsendresultRequest();
             request15.AgentId = agentId;
             request15.TaskId = response13.TaskId;
-            OapiMessageCorpconversationGetsendresultResponse response15 = client15.Execute(request15, AccessToken);
+            OapiMessageCorpconversationGetsendresultResponse response15 = client15.Execute(request15, accessToken);
             Console.WriteLine("获取工作通知消息的发送结果");
             Console.WriteLine(response15.Body);
             Console.WriteLine();
