@@ -71,6 +71,7 @@ using Microsoft.AspNetCore.Http.Features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -178,13 +179,15 @@ namespace ConsoleApp1
             // 然而又有新问题：还是和上面“更新角色”的报错一样，提示：缺少参数 corpid or appkey
             DefaultDingTalkClient client8 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/extcontact/create");
             OapiExtcontactCreateRequest request8 = new OapiExtcontactCreateRequest();
-            OapiExtcontactCreateRequest.OpenExtContactDomain contacter = new OapiExtcontactCreateRequest.OpenExtContactDomain();
-            contacter.Title = "CFO";
-            contacter.Name = "测试的外部联系人";
-            contacter.StateCode = "86";
-            contacter.CompanyName = "钉钉";
-            contacter.Mobile = "15295778118";
-            request8.Contact = contacter.ToString();
+            OapiExtcontactCreateRequest.OpenExtContactDomain contacter = new OapiExtcontactCreateRequest.OpenExtContactDomain
+            {
+                Title = "CFO",
+                Name = "测试的外部联系人",
+                StateCode = "86",
+                CompanyName = "钉钉",
+                Mobile = "15295778118"
+            };
+            request8.Contact_ = contacter;
             OapiExtcontactCreateResponse response8 = client8.Execute(request8, accessToken);
             Console.WriteLine("添加外部联系人:");
             Console.WriteLine(response6.Body);
@@ -201,16 +204,16 @@ namespace ConsoleApp1
             Console.WriteLine();
 
             // 创建群会话
-            DefaultDingTalkClient client10 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/create");
-            OapiChatCreateRequest request10 = new OapiChatCreateRequest();
-            request10.Name = "TestCreate";
-            request10.Owner = userId;
-            request10.Useridlist ??= new List<string>();
-            request10.Useridlist.Add(userId);
-            OapiChatCreateResponse response10 = client10.Execute(request10, accessToken);
-            Console.WriteLine("创建群会话");
-            Console.WriteLine(response10.Body);
-            Console.WriteLine();
+            //DefaultDingTalkClient client10 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/create");
+            //OapiChatCreateRequest request10 = new OapiChatCreateRequest();
+            //request10.Name = "TestCreate";
+            //request10.Owner = userId;
+            //request10.Useridlist ??= new List<string>();
+            //request10.Useridlist.Add(userId);
+            //OapiChatCreateResponse response10 = client10.Execute(request10, accessToken);
+            //Console.WriteLine("创建群会话");
+            //Console.WriteLine(response10.Body);
+            //Console.WriteLine();
 
             //// 获取群会话
             //DefaultDingTalkClient client11 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/get");
@@ -312,22 +315,51 @@ namespace ConsoleApp1
             Console.WriteLine(response15.Body);
             Console.WriteLine();
 
-            //发送消息到企业群(使用时需将client10注释恢复)
-            DefaultDingTalkClient client16 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/send");
-            OapiChatSendRequest request16 = new OapiChatSendRequest();
-            request16.Chatid = response10.Chatid;
-            request16.Msg = @"{
-                ""msgtype"":""text"",
-                ""text"": {             
-                    ""content"": ""测试发送消息到企业群: 还在coding吗兄弟？"",
-                }
-            }";
-            OapiChatSendResponse response16 = client16.Execute(request16, accessToken);
-            Console.WriteLine("发送消息到企业群");
-            Console.WriteLine(response16.Body);
+
+            ////发送消息到企业群(使用时需将client10注释恢复)
+            //DefaultDingTalkClient client16 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/send");
+            //OapiChatSendRequest request16 = new OapiChatSendRequest();
+            //request16.Chatid = response10.Chatid;
+            //request16.Msg = @"{
+            //    ""msgtype"":""text"",
+            //    ""text"": {             
+            //        ""content"": ""测试发送消息到企业群: 还在coding吗兄弟？"",
+            //    }
+            //}";
+            //OapiChatSendResponse response16 = client16.Execute(request16, accessToken);
+            //Console.WriteLine("发送消息到企业群");
+            //Console.WriteLine(response16.Body);
+            //Console.WriteLine();
+
+            //发起代办
+            IDingTalkClient client17 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/workrecord/add");
+            OapiWorkrecordAddRequest request17 = new OapiWorkrecordAddRequest();
+            request17.Userid = userId;
+            request17.CreateTime = 1496678400000L;
+            request17.Title = "title";
+            request17.Url = "https://oa.dingtalk.com";
+            List<OapiWorkrecordAddRequest.FormItemVoDomain> formItemList = new List<OapiWorkrecordAddRequest.FormItemVoDomain>();
+            OapiWorkrecordAddRequest.FormItemVoDomain formItem = new OapiWorkrecordAddRequest.FormItemVoDomain();
+            formItemList.Add(formItem);
+            formItem.Title = "标题";
+            formItem.Content = "内容     ";
+            request17.FormItemList_ = formItemList;
+            request17.BizId = "TestRecord";
+            OapiWorkrecordAddResponse response17 = client17.Execute(request17, accessToken);
+            Console.WriteLine("发起代办");
+            Console.WriteLine(response17.Body);
             Console.WriteLine();
 
-
+            //更新代办
+            IDingTalkClient client18 = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/workrecord/update");
+            OapiWorkrecordUpdateRequest request18 = new OapiWorkrecordUpdateRequest();
+            request18.Userid = userId;
+            request18.RecordId = "TestRecord";
+            request18.SetHttpMethod("GET");
+            OapiWorkrecordUpdateResponse response18 = client.Execute(request18, accessToken);
+            Console.WriteLine("更新代办");
+            Console.WriteLine(response18.Body);
+            Console.WriteLine();
 
             ////根据部门获取到Urid
             //DefaultDingTalkClient clie = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/getDeptMember");
