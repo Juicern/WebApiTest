@@ -200,17 +200,17 @@ namespace ConsoleApp1
             Console.WriteLine(response9.Body);
             Console.WriteLine();
 
-            //// 创建群会话
-            //DefaultDingTalkClient client10 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/create");
-            //OapiChatCreateRequest request10 = new OapiChatCreateRequest();
-            //request10.Name = "TestCreate";
-            //request10.Owner = userId;
-            //request10.Useridlist ??= new List<string>();
-            //request10.Useridlist.Add(userId);
-            //OapiChatCreateResponse response10 = client10.Execute(request10, accessToken);
-            //Console.WriteLine("创建群会话");
-            //Console.WriteLine(response10.Body);
-            //Console.WriteLine();
+            // 创建群会话
+            DefaultDingTalkClient client10 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/create");
+            OapiChatCreateRequest request10 = new OapiChatCreateRequest();
+            request10.Name = "TestCreate";
+            request10.Owner = userId;
+            request10.Useridlist ??= new List<string>();
+            request10.Useridlist.Add(userId);
+            OapiChatCreateResponse response10 = client10.Execute(request10, accessToken);
+            Console.WriteLine("创建群会话");
+            Console.WriteLine(response10.Body);
+            Console.WriteLine();
 
             //// 获取群会话
             //DefaultDingTalkClient client11 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/get");
@@ -238,49 +238,55 @@ namespace ConsoleApp1
             request13.AgentId = agentId;
             request13.ToAllUser = true;
             OapiMessageCorpconversationAsyncsendV2Request.MsgDomain msgDomain = new OapiMessageCorpconversationAsyncsendV2Request.MsgDomain();
-            //msgDomain.Msgtype = "oa";
-            //msgDomain.Oa.MessageUrl = "http://dingtalk.com";
-            //msgDomain.Oa.Head.Bgcolor = "FFBBBBBB";
-            //msgDomain.Oa.Head.Text = "头部标题";
-            //msgDomain.Oa.Body.Title = "正文标题";
-            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "姓名", Value = "张三" });
-            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "年龄", Value = "20" });
-            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "身高", Value = "1.8米" });
-            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "体重", Value = "130斤" });
-            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "学历", Value = "本科" });
-            //msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "爱好", Value = "打球、听音乐" });
-            //msgDomain.Oa.Body.Rich.Num = "15.6";
-            //msgDomain.Oa.Body.Rich.Unit = "元";
-            //msgDomain.Oa.Body.Content = "大段文本大段文本大段文本大段文本大段文本";
-            //msgDomain.Oa.Body.Image = "@lADOADmaWMzazQKA";
-            //msgDomain.Oa.Body.FileCount = "3";
-            //msgDomain.Oa.Body.Author = "李四";
-            request13.Msg = @"{
-                ""msgtype"": ""oa"",
-                ""oa"": {
-                    ""message_url"": ""http://dingtalk.com"",
-                    ""head"": {
-                        ""bgcolor"": ""FFBBBBBB"",
-                        ""text"": ""头部标题""
-                    },
-                    ""body"": {
-                        ""title"": ""正文标题"",
-                        ""form"": [
-                            {""key"": ""姓名:"", ""value"": ""张三""},
-                            {""key"": ""年龄:"", ""value"": ""20""},
-                            {""key"": ""身高:"", ""value"": ""1.8米""},
-                            {""key"": ""体重:"", ""value"": ""130斤""},
-                            {""key"": ""学历:"", ""value"": ""本科""},
-                            {""key"": ""爱好:"", ""value"": ""打球、听音乐""}
-                        ],
-                        ""rich"": {""num"": ""15.6"", ""unit"": ""元""},
-                        ""content"": ""大段文本大段文本大段文本大段文本大段文本大段文本"",
-                        ""image"": ""@lADOADmaWMzazQKA"",
-                        ""file_count"": ""3"",
-                        ""author"": ""李四""
-                    }
-                }
-            }";
+            msgDomain.Msgtype = "oa";
+            msgDomain.Oa = new OapiMessageCorpconversationAsyncsendV2Request.OADomain();
+            msgDomain.Oa.MessageUrl = "http://dingtalk.com";
+            msgDomain.Oa.Head = new OapiMessageCorpconversationAsyncsendV2Request.HeadDomain();
+            msgDomain.Oa.Head.Bgcolor = "FFBBBBBB";
+            msgDomain.Oa.Head.Text = "头部标题";
+            msgDomain.Oa.Body = new OapiMessageCorpconversationAsyncsendV2Request.BodyDomain();
+            msgDomain.Oa.Body.Title = "正文标题";
+            msgDomain.Oa.Body.Form = new List<OapiMessageCorpconversationAsyncsendV2Request.FormDomain>();
+            msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "姓名", Value = "张三" });
+            msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "年龄", Value = "20" });
+            msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "身高", Value = "1.8米" });
+            msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "体重", Value = "130斤" });
+            msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "学历", Value = "本科" });
+            msgDomain.Oa.Body.Form.Add(new OapiMessageCorpconversationAsyncsendV2Request.FormDomain() { Key = "爱好", Value = "打球、听音乐" });
+            msgDomain.Oa.Body.Rich = new OapiMessageCorpconversationAsyncsendV2Request.RichDomain();
+            msgDomain.Oa.Body.Rich.Num = "15.6";
+            msgDomain.Oa.Body.Rich.Unit = "元";
+            msgDomain.Oa.Body.Content = "大段文本大段文本大段文本大段文本大段文本";
+            msgDomain.Oa.Body.Image = "@lADOADmaWMzazQKA";
+            msgDomain.Oa.Body.FileCount = "3";
+            msgDomain.Oa.Body.Author = "李四";
+            request13.Msg_ = msgDomain;
+            //request13.Msg = @"{
+            //    ""msgtype"": ""oa"",
+            //    ""oa"": {
+            //        ""message_url"": ""http://dingtalk.com"",
+            //        ""head"": {
+            //            ""bgcolor"": ""FFBBBBBB"",
+            //            ""text"": ""头部标题""
+            //        },
+            //        ""body"": {
+            //            ""title"": ""正文标题"",
+            //            ""form"": [
+            //                {""key"": ""姓名:"", ""value"": ""张三""},
+            //                {""key"": ""年龄:"", ""value"": ""20""},
+            //                {""key"": ""身高:"", ""value"": ""1.8米""},
+            //                {""key"": ""体重:"", ""value"": ""130斤""},
+            //                {""key"": ""学历:"", ""value"": ""本科""},
+            //                {""key"": ""爱好:"", ""value"": ""打球、听音乐""}
+            //            ],
+            //            ""rich"": {""num"": ""15.6"", ""unit"": ""元""},
+            //            ""content"": ""大段文本大段文本大段文本大段文本大段文本大段文本"",
+            //            ""image"": ""@lADOADmaWMzazQKA"",
+            //            ""file_count"": ""3"",
+            //            ""author"": ""李四""
+            //        }
+            //    }
+            //}"; 
             OapiMessageCorpconversationAsyncsendV2Response response13 = client13.Execute(request13, accessToken);
             Console.WriteLine("发送工作通知:");
             Console.WriteLine(response13.Body);
@@ -306,20 +312,20 @@ namespace ConsoleApp1
             Console.WriteLine(response15.Body);
             Console.WriteLine();
 
-            ////发送消息到企业群(使用时需将client10注释恢复)
-            //DefaultDingTalkClient client16 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/send");
-            //OapiChatSendRequest request16 = new OapiChatSendRequest();
-            //request16.Chatid = response10.Chatid;
-            //request16.Msg = @"{
-            //    ""msgtype"":""text"",
-            //    ""text"": {             
-            //        ""content"": ""测试发送消息到企业群: 还在coding吗兄弟？"",
-            //    }
-            //}";
-            //OapiChatSendResponse response16 = client16.Execute(request16, AccessToken);
-            //Console.WriteLine("发送消息到企业群");
-            //Console.WriteLine(response16.Body);
-            //Console.WriteLine();
+            //发送消息到企业群(使用时需将client10注释恢复)
+            DefaultDingTalkClient client16 = new DefaultDingTalkClient("https://oapi.dingtalk.com/chat/send");
+            OapiChatSendRequest request16 = new OapiChatSendRequest();
+            request16.Chatid = response10.Chatid;
+            request16.Msg = @"{
+                ""msgtype"":""text"",
+                ""text"": {             
+                    ""content"": ""测试发送消息到企业群: 还在coding吗兄弟？"",
+                }
+            }";
+            OapiChatSendResponse response16 = client16.Execute(request16, accessToken);
+            Console.WriteLine("发送消息到企业群");
+            Console.WriteLine(response16.Body);
+            Console.WriteLine();
 
 
 

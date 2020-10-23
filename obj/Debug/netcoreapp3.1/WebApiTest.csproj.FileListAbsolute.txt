@@ -7,7 +7,6 @@ C:\Users\RickyChu\OneDrive - HHU\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.r
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.runtimeconfig.dev.json
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.dll
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\bin\Debug\netcoreapp3.1\WebApiTest.pdb
-C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.csprojAssemblyReference.cache
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.AssemblyInfoInputs.cache
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.AssemblyInfo.cs
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.csproj.CoreCompileInputs.cache
@@ -50,3 +49,4 @@ C:\Users\RickyChu\OneDrive - HHU\WebApiTest\bin\Debug\netcoreapp3.1\Newtonsoft.J
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\bin\Debug\netcoreapp3.1\topsdk-net-core.dll
 C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.csproj.CopyComplete
+C:\Users\RickyChu\OneDrive - HHU\WebApiTest\obj\Debug\netcoreapp3.1\WebApiTest.csprojAssemblyReference.cache
