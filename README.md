@@ -1,33 +1,33 @@
 # WebApiTest
 
-调用钉钉API的.NET测试
+呼叫釘釘API的.NET測試
 
-## 注意事项
+## 注意事項
 
-1. vs必须为2019版本，2017及以前无法使用.NET core 3.1
+1. vs必須為2019版本，2017及以前無法使用.NET core 3.1
 
-2. 在钉钉SDK处需下载.NET core版本的SDK
+2. 在釘釘SDK處需下載.NET core版本的SDK
 
-3. .NET core 3.1 使用微软自己的JSON库，因为bug太多，建议使用原来的[Newtonsoft](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/)
+3. .NET core 3.1 使用微軟自己的JSON庫，因為bug太多，建議使用原來的[Newtonsoft](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/)
 
-4. dingtalk-sdk-netcore需放在文件外，否则会报错(引用了.net framework的东西)
+4. dingtalk-sdk-netcore需放在檔案外，否則會報錯(引用了.net framework的東西)
 
-5. 需要在钉钉的开放平台修改权限，否则获取时会显示：没有权限，而获取不到信息
+5. 需要在釘釘的開放平臺修改許可權，否則獲取時會顯示：沒有許可權，而獲取不到資訊
 
-6. 需要把当前IP加入白名单中，否则会报“访问IP不在白名单之中”
+6. 需要把當前IP加入白名單中，否則會報“訪問IP不在白名單之中”
 
-7. 需要在开放平台把权限范围改为“全部员工”，否则获取部门ID时会报错“请求的部门ID不在授权范围内”
+7. 需要在開放平臺把許可權範圍改為“全部員工”，否則獲取部門ID時會報錯“請求的部門ID不在授權範圍內”
 
-8. 连续发送相同消息时，无法接收，To_all_user设置为true时，一天最多发送三次，这些都不会有错误提示。
+8. 連續傳送相同訊息時，無法接收，To_all_user設定為true時，一天最多傳送三次，這些都不會有錯誤提示。
 
-9. 更新角色，有bug，提示需要修改为GET，修改后依然报错称缺少CorId和APPkey，但是新版本小程序已经没有CorId了。
+9. 更新角色，有bug，提示需要修改為GET，修改後依然報錯稱缺少CorId和APPkey，但是新版本小程式已經沒有CorId了。
 
-10. 添加外部联系人 官方代码有问题(已解决，需要在OpenExtContactDomain前加上request名
-    ，然而又有新问题：还是和上面“更新角色”的报错一样，提示：缺少参数 corpid or appkey
+10. 新增外部聯絡人 官方程式碼有問題(已解決，需要在OpenExtContactDomain前加上request名
+    ，然而又有新問題：還是和上面“更新角色”的報錯一樣，提示：缺少引數 corpid or appkey
 
-11. 更新代办也有问题
+11. 更新代辦也有問題
 
-12. 在发送消息和发起代办中，可使用官方提供的类来赋值。
+12. 在傳送訊息和發起代辦中，可使用官方提供的類來賦值。
 
     
 
